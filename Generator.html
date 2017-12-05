@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>String Generator</title>
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stlesheet" href="css/style.css">
+
+  </head>
+
+  <body>
+      <div id="wrapper">
+          <h1>Donna and Jose's String Generator</h1>
+          <form id="string-generator">
+            <label>
+              How many words in the string?
+              <input name="word-count" step="1" min="1" max="20" type="number">
+            </label>
+            <input value="Generate String" type="submit">
+            <input name="action" value="generate-string" type="hidden">
+            <span id="result" style="display: none;"></span>
+          </form>
+        <p class="credit">
+          Wordlist courtesy of
+          <a href="http://www-01.sil.org/linguistics/wordlists/english/">SIL</a>
+        </p>
+        </div>
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+        <script src="js/ajax-lab.js">Math.random().toString(36).replace(/[^a-z]+/g, '').substr(0, 5); </script>
+
+
+
+
+  </body>
+</html>
