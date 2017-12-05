@@ -15,7 +15,8 @@
     <link href="starter-template.css" rel="stylesheet">
     <style>
         #map {
-            height: 100%;
+            height: 400px;
+            width: 100%;
         }
     </style>
 </head>
@@ -48,7 +49,6 @@
     <div class="starter-template">
         <h1>Contact</h1>
     </div>
-
     <div class="row">
         <div class="col-md-6">
             <p>
@@ -56,29 +56,34 @@
                 Number: 312.123.4567<br>
                 email: j12345672@gmail.com <br>
                 <br>
-                <b>Address</b> <br>
+            </p>
+        </div>
+        <div class="col-md-6">
+            <p>
                 Loyola University Chicago <br>
                 820 N Michigan Ave <br>
                 Chicago, IL, 60611
             </p>
         </div>
-        <div class="col-md-6" id="map:">
-
-        </div>
     </div>
+
+    <div id="map"></div>
 
 </main>
 <script>
-    var map;
     function initMap() {
-        map = new google.maps.Map(document.getElementById('map'), {
-            center: {lat: -34.397, lng: 150.644},
-            zoom: 8
+        var uluru = {lat: -25.363, lng: 131.044};
+        var map = new google.maps.Map(document.getElementById('map'), {
+            zoom: 4,
+            center: uluru
+        });
+        var marker = new google.maps.Marker({
+            position: uluru,
+            map: map
         });
     }
 </script>
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCWm583Wo6wYO1csayhOSz-7MsVXVnlXts&callback=initMap"
-        async defer></script>
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAH-sTODWWYxwwavOe3AQW91qsUwCOnaew&callback=initMap"></script>
 
 </body>
 </html>
