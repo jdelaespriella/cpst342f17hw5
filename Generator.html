@@ -62,12 +62,12 @@
         </div>
         <div class="row">
             <div class="col col-8">
-                <section class='userResponse'>
+                <section class='uresponse'>
                     <p></p>
                 </section>
             </div><div class="row">
             <div class="col col-8">
-                <section class='printResponse'>
+                <section class='print'>
                     <p id="response"></p>
                 </section>
             </div>
@@ -88,7 +88,7 @@
 
             if ($(".prompt input").val() !== "") {
                 $new_comment = $("<p>").text($(".prompt input").val());
-                $(".userResponse").append($new_comment);
+                $(".uresponse").append($new_comment);
                 $(".prompt input").val("");
 
                 $(document).ready(function(){
@@ -96,13 +96,13 @@
                     let $promise = $.get('https://ellypost.com/courses/453/ajax-lab/actions.php', {action: 'generate string', ['word-count']: parseInt($(".prompt input").val(""))});
                     $promise
                         .done(function(r){
-                            console.log("The promise was successful", r);
+                            console.log("Success!", r);
                             $("#response").text(JSON.parse(r));
                         })
 
                         .fail(function(err){
-                            console.error("The promise was not succesful", err);
-                            $("#response").text("The request was not succesful");
+                            console.error("Failure!", err);
+                            $("#response").text("You have failed");
                         })
                 });
             };
