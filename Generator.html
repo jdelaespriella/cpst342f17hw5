@@ -1,60 +1,76 @@
 <!doctype html>
-<html>
+<html lang="en">
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width">
-    <title>String Generator</title>
-    <link rel="stylesheet" href="css/reset.css">
-    <link rel="stylesheet" href="css/style.css">
-</head>
-<body>
-<div id="wrapper">
-    <h1>String Generator</h1>
-    <form id="string-generator">
-        <label>
-            How many words in the string?
-            <input name="word-count" step="1" min="1" max="20" type="number">
-        </label>
-        <input value="Generate String" type="submit">
-        <input name="action" value="generate-string" type="hidden">
-        <span id="result" style="display: none;"></span>
-    </form>
-    <p class="credit">
-        WordList courtesy of
-        <a href="http://www-01.sil.org/linguistics/wordlists/english/">SIL</a>
-    </p>
-</div>
-<script src="https://ajax.googleapis.com/ajax/libs/jquey/2.1.3/jquery.min.js"></script>
-<script src="js/ajax-lab.js">
-    function ajaxResponse() //This gets called when the readyState changes.
-    {
-        if(ajaxRequest.readyState !=4) //Check to see if we're done
-        {return;     }
-        else{
-            if(ajaxRequest.status == 200) //Check to see if successful
-            {
-                document.getElementById("showtime").innerHTML =
-                    ajaxRequest.responseText;   }
-            else{
-                alert("Request failed: " + ajaxRequest.statusText);
-            }
-        }
-    }
-    function getServerTime() //The main JavaScript for calling the update.
-    {
-        ajaxRequest = getXMLHttpRequest();
-        if (!ajaxRequest)
-            document.getElementById("showtime").innerHTML  = "Request error!";
-        return;
-        var myURL = "telltime.js";
-        var myRand = parseInt(Math.random()*999999999999999);
-        myURL = myURL + "?rand=" + myRand;
-        ajaxRequest.onreadystatechange =ajaxResponse;
-        ajaxRequest.open("GET", myURL);
-        ajaxRequest.send(null);
-    }
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
 
-</script>
+    <title>String Generator</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="starter-template.css" rel="stylesheet">
+    <style>
+        #map {
+            height: 400px;
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body>
+
+<nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+    <a class="navbar-brand" href="#">Navigation</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="about.html">About the Authors</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="contact.html">Contact</a>
+            </li>
+
+        </ul>
+    </div>
+</nav>
+
+<main role="main" class="container">
+
+    <div class="starter-template">
+        <h1>Let's Generate a String!</h1>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <p>
+                Name: Jose De La Espriella <br>
+                Number: 312.123.4567<br>
+                email: j12345672@gmail.com <br>
+                <br>
+            </p>
+        </div>
+        <div class="col-md-6">
+            <p>
+                Loyola University Chicago <br>
+                820 N Michigan Ave <br>
+                Chicago, IL, 60611
+            </p>
+        </div>
+    </div>
+
+    <div id="map"></div>
+
+</main>
 
 </body>
 </html>
