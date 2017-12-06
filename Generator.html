@@ -54,26 +54,71 @@
         <h1>Let's Generate a String!</h1>
     </div>
     <div class="row">
-        <div class="col-md-6">
-            <p>
-                Name: Jose De La Espriella <br>
-                Number: 312.123.4567<br>
-                email: j12345672@gmail.com <br>
-                <br>
-            </p>
+        <div class="col col-8">
+            <section class='prompt'>
+                <p>Pick a number!</p>
+                <input><button>+</button>
+            </section>
         </div>
-        <div class="col-md-6">
-            <p>
-                Loyola University Chicago <br>
-                820 N Michigan Ave <br>
-                Chicago, IL, 60611
-            </p>
+        <div class="row">
+            <div class="col col-8">
+                <section class='userResponse'>
+                    <p></p>
+                </section>
+            </div><div class="row">
+            <div class="col col-8">
+                <section class='printResponse'>
+                    <p id="response"></p>
+                </section>
+            </div>
+        </div>
         </div>
     </div>
 
-    <div id="map"></div>
 
 </main>
+
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script>
+    var main = function() {
+        "use strict";
+
+        var addComment = function () {
+            var $new_comment;
+
+            if ($(".prompt input").val() !== "") {
+                $new_comment = $("<p>").text($(".prompt input").val());
+                $(".userResponse").append($new_comment);
+                $(".prompt input").val("");
+
+                $(document).ready(function(){
+
+                    let $promise = $.get('https://ellypost.com/courses/453/ajax-lab/actions.php', {action: 'generate string', ['word-count']: parseInt($(".prompt input").val(""))});
+                    $promise
+                        .done(function(r){
+                            console.log("The promise was successful", r);
+                            $("#response").text(JSON.parse(r));
+                        })
+
+                        .fail(function(err){
+                            console.error("The promise was not succesful", err);
+                            $("#response").text("The request was not succesful");
+                        })
+                });
+            };
+        };
+
+        $(".prompt button").on("click", function (event) {
+            addComment();
+        });
+
+
+    };
+
+    $(document).ready(main);
+
+
+</script>
 
 </body>
 </html>
