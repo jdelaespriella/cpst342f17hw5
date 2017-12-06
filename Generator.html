@@ -80,7 +80,7 @@
 
 <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 <script>
-    var main = function() {
+     var main = function() {
         "use strict";
 
         var addComment = function () {
@@ -97,7 +97,7 @@
                     $promise
                         .done(function(r){
                             console.log("Success!", r);
-                            $("#response").text(JSON.stringify(r));
+                            $("#response").text(JSON.stringify(arr));
                         })
 
                         .fail(function(err){
@@ -114,6 +114,7 @@
 
 
     };
+
 
     $(document).ready(main);
 
