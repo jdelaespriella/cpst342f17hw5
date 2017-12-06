@@ -93,11 +93,11 @@
 
                 $(document).ready(function(){
 
-                    let $promise = $.get('https://ellypost.com/courses/453/ajax-lab/actions.php', {action: 'generate string', ['word-count']: parseInt($(".prompt input").val(""))});
+                    var $promise = $.get('https://ellypost.com/courses/453/ajax-lab/actions.php', {action: 'generate string', 'word-count': parseInt($(".prompt input").val(""))});
                     $promise
                         .done(function(r){
                             console.log("Success!", r);
-                            $("#response").text(JSON.parse(r));
+                            $("#response").text(JSON.stringify(r));
                         })
 
                         .fail(function(err){
@@ -105,7 +105,7 @@
                             $("#response").text("You have failed");
                         })
                 });
-            };
+            }
         };
 
         $(".prompt button").on("click", function (event) {
